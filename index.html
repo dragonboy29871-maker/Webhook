@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background: #111;
+      color: white;
+    }
+    input, button {
+      font-size: 20px;
+      padding: 10px;
+      margin: 10px;
+      width: 80%;
+      border-radius: 10px;
+      border: none;
+    }
+    button {
+      background: #5865F2;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Send Message</h2>
+
+<input id="msg" placeholder="type message">
+<br>
+<button onclick="send()">Send</button>
+
+<script>
+function send() {
+  const msg = document.getElementById("msg").value;
+
+  fetch("https://discord.com/api/webhooks/1500484158760419450/m53nkX6ux9t12aLIHdqw1a-nxHTrpUyDqdeBLWLQQgonqmIDk7_krTJyYWTtvLi3kCLE", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      content: msg
+    })
+  });
+
+  document.getElementById("msg").value = "";
+}
+</script>
+
+</body>
+</html>
